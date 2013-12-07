@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-babel-interlingua
 Version:	20131013
-Release:	2
+Release:	3
 Summary:	TeXLive babel-interlingua package
 Group:		Publishing
 URL:		http://tug.org/texlive
