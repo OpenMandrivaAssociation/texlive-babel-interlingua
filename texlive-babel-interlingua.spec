@@ -1,19 +1,13 @@
-# revision 30276
-# category Package
-# catalog-ctan undef
-# catalog-date undef
-# catalog-license undef
-# catalog-version undef
 Name:		texlive-babel-interlingua
-Version:	1.6
-Release:	2
+Version:	30276
+Release:	1
 Summary:	TeXLive babel-interlingua package
 Group:		Publishing
 URL:		http://tug.org/texlive
 License:	http://www.tug.org/texlive/LICENSE.TL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.r30276.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.doc.r30276.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.source.r30276.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -23,12 +17,12 @@ Requires(post):	texlive-kpathsea
 TeXLive babel-interlingua package.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -40,7 +34,8 @@ TeXLive babel-interlingua package.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
