@@ -1,6 +1,6 @@
 Name:		texlive-babel-interlingua
 Version:	30276
-Release:	1
+Release:	2
 Summary:	TeXLive babel-interlingua package
 Group:		Publishing
 URL:		http://tug.org/texlive
