@@ -1,44 +1,27 @@
-Name:		texlive-babel-interlingua
-Version:	30276
-Release:	2
-Summary:	TeXLive babel-interlingua package
+%global tl_name babel-interlingua
+%global tl_revision 77682
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.6
+Release:	%{tl_revision}.1
+Summary:	Babel support for Interlingua
 Group:		Publishing
-URL:		https://tug.org/texlive
-License:	http://www.tug.org/texlive/LICENSE.TL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.source.r%{version}.tar.xz
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/babel-contrib/interlingua
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-interlingua.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-TeXLive babel-interlingua package.
+The package provides the language definition file for support of
+Interlingua in babel. Translations to Interlingua of standard "LaTeX
+names" (no shortcuts are provided). Interlingua itself is an auxiliary
+language, built from the common vocabulary of Spanish/Portuguese,
+English, Italian and French, with some normalisation of spelling.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/generic/babel-interlingua/interlingua.ldf
-%doc %{_texmfdistdir}/doc/generic/babel-interlingua/interlingua.pdf
-#- source
-%doc %{_texmfdistdir}/source/generic/babel-interlingua/interlingua.dtx
-%doc %{_texmfdistdir}/source/generic/babel-interlingua/interlingua.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
